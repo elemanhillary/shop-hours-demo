@@ -9,6 +9,7 @@ class HoursForm extends Component {
 
           <div className="row">
             <div className="col-md-12">
+              {/* Button group (radio buttons) for selecting days of the week */}
               <div className="btn-group" data-toggle="buttons">
                 {/* TODO: Change this into a map loop */}
                 <label className="btn btn-default">
@@ -36,6 +37,8 @@ class HoursForm extends Component {
             </div>
           </div>
 
+          {/* From and To time dropdowns */}
+          {/* TODO: Use a text field with autocomplete */}
           <div className="row" style={{marginTop:"1em"}}>
             <form className="form-inline">
 
