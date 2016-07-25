@@ -11,10 +11,32 @@ import HoursPanel from './HoursPanel';
  * rendering the overall structure.
  */
 class ShopHoursApp extends Component {
-  render() {
-    // TODO: Use state instead of hard coding
-    var hoursSet = {Mon: {start: 8, end: 17}}
+  // Constructor - Sets the inital state to an empty list of hours
+  // Format of an item in the hoursList looks like: {day: 'Mon', start: 8, end: 14}
+  constructor(props){
+    super(props);
+    this.state = {hoursList: []};
 
+    this.addHours = this.addHours.bind(this);
+  }
+
+  /* Callback for the HoursForm component.
+   * Adds a set of begin/end hours to the state
+   */
+  addHours(hours){
+    var hoursList = this.state.hoursList;
+    hoursList.push(hours);
+    this.setState({hoursList: hoursList});
+  }
+
+  /* Callback for the HoursPanel component.
+   * Removes a set of begin/end hours from the state
+   */
+  removeHours(hours){
+
+  }
+
+  render() {
     return (
       <div className="App">
         <div className="row">
@@ -25,10 +47,10 @@ class ShopHoursApp extends Component {
         </div>
         <div className="row">
           <div className="col-md-4 col-md-offset-2">
-            <HoursPanel hours={hoursSet}/>
+            <HoursPanel hours={this.state.hoursList} removeHours={this.removeHours}/>
           </div>
           <div className="col-md-4">
-            <HoursForm />
+            <HoursForm addHours={this.addHours}/>
           </div>
         </div>
       </div>
