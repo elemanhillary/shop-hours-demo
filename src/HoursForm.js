@@ -1,5 +1,31 @@
 import React, { Component } from 'react';
 
+// Component to wrap the hours select element (drop down)
+class HoursSelect extends Component {
+    render(){
+
+        // Loop over the hours in a day and generate a key/value pair with
+        // hour number (24hr format) as they key and 24-hour string (with am/pm) as the value
+        var hours = {};
+        var hour = 12;
+        for (var i = 0; i < 24;i++) {
+            hours[i] = hour + ':00 ' + (i > 11 ? 'pm' : 'am');
+            hour = hour >= 12 ? 1 : hour + 1;
+        }
+
+        // Map over the key/value object generated above and return the finished select element
+        return(
+            <select className="form-control" name={this.props.name} id={this.props.id}>
+            {Object.keys(hours).map(function(key) {
+                return (
+                    <option key={key} value={key}>{hours[key]}</option>
+                );
+            })}
+            </select>
+        );
+    }
+}
+
 // Compoennt for form to add open hours
 class HoursForm extends Component {
     constructor(props){
@@ -16,7 +42,7 @@ class HoursForm extends Component {
         var weekday = event.target.elements.weekdays.value;
         var startTime = event.target.elements.startTime.value;
         var endTime = event.target.elements.endTime.value;
-        
+
         // TODO Sanity checking -- End time should be before start time
 
         this.props.addHours({day: weekday, start: startTime, end: endTime});
@@ -86,32 +112,6 @@ class HoursForm extends Component {
                     </form>
                 </div>
             </div>
-        );
-    }
-}
-
-// Component to wrap the hours select element (drop down)
-class HoursSelect extends Component {
-    render(){
-
-        // Loop over the hours in a day and generate a key/value pair with
-        // hour number (24hr format) as they key and 24-hour string (with am/pm) as the value
-        var hours = {};
-        var hour = 12;
-        for (var i = 0; i < 24;i++) {
-            hours[i] = hour + ':00 ' + (i > 11 ? 'pm' : 'am');
-            hour = hour >= 12 ? 1 : hour + 1;
-        }
-
-        // Map over the key/value object generated above and return the finished select element
-        return(
-            <select className="form-control" name={this.props.name} id={this.props.id}>
-            {Object.keys(hours).map(function(key) {
-                return (
-                    <option key={key} value={key}>{hours[key]}</option>
-                );
-            })}
-            </select>
         );
     }
 }
