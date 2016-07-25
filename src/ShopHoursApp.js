@@ -24,6 +24,7 @@ class ShopHoursApp extends Component {
 
     /* Callback for the HoursForm component.
     * Adds a set of begin/end hours to the state
+    * TODO: deconflict overlapping hours
     */
     addHours(hours){
         var hoursList = this.state.hoursList;
@@ -35,7 +36,22 @@ class ShopHoursApp extends Component {
     * Removes a set of begin/end hours from the state
     */
     removeHours(hours){
+        var hoursList = this.state.hoursList;
 
+        // Find the index of the matching hours to be removed
+        var hrsIndex = hoursList.findIndex(function(element, index, arr){
+            if(hours.day === element.day && hours.start === element.start && hours.end === element.end){
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+        // Remove the matching element
+        hoursList.splice(hrsIndex, 1);
+
+        // Update the state
+        this.setState({hoursList: hoursList})
     }
 
     render() {

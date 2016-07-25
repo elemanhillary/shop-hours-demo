@@ -16,8 +16,7 @@ class HoursForm extends Component {
         var weekday = event.target.elements.weekdays.value;
         var startTime = event.target.elements.startTime.value;
         var endTime = event.target.elements.endTime.value;
-
-        console.log(this);
+        
         // TODO Sanity checking -- End time should be before start time
 
         this.props.addHours({day: weekday, start: startTime, end: endTime});

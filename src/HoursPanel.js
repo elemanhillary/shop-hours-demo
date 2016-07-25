@@ -8,7 +8,7 @@ class HoursPanel extends Component {
         if(this.props.hours === null) {
             hoursList = <p className="text-muted">No hours yet. Use the form to the right to add your shop's hours.</p>
         } else {
-            hoursList = <HoursList hours={this.props.hours} />
+            hoursList = <HoursList hours={this.props.hours} removeHours={this.props.removeHours}/>
         }
 
         return (
@@ -29,9 +29,9 @@ class HoursList extends Component {
     render(){
         var hoursRows = this.props.hours.map(function(hoursItem) {
             return (
-                <HoursRow key={hoursItem.day + hoursItem.start} dayHours={hoursItem}/>
+                <HoursRow key={hoursItem.day + hoursItem.start} dayHours={hoursItem} removeHours={this.props.removeHours}/>
             );
-        });
+        }.bind(this));
 
         return (
             <ul className="list-group">
@@ -52,9 +52,16 @@ class HoursRow extends Component {
             return ((hour - 12) + "pm");
         }
     }
+    handleRemove(){
+        this.props.removeHours(this.props.dayHours);
+    }
     render() {
         return (
-            <li className="list-group-item"><strong>{this.props.dayHours.day}:</strong> {this.formatHour(this.props.dayHours.start)} - {this.formatHour(this.props.dayHours.end)}</li>
+            <li className="list-group-item">
+                <strong>{this.props.dayHours.day}:</strong>
+                {this.formatHour(this.props.dayHours.start)} - {this.formatHour(this.props.dayHours.end)}
+                <button type="button" className="close" onClick={this.handleRemove.bind(this)}>&times;</button>
+            </li>
         );
     }
 }
