@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
+import ShopHoursApp from './ShopHoursApp';
+//import './index.css';
 
 ReactDOM.render(
-  <App />,
+  <ShopHoursApp />,
   document.getElementById('root')
 );
