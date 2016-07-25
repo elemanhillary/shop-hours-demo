@@ -13,10 +13,10 @@ class HoursPanel extends Component {
 
         return (
             <div className="panel panel-default">
-            <div className="panel-body">
-            My shop is open:
-            {hoursList}
-            </div>
+                <div className="panel-body">
+                    My shop is open:
+                    {hoursList}
+                </div>
             </div>
         );
     }
@@ -35,7 +35,7 @@ class HoursList extends Component {
 
         return (
             <ul className="list-group">
-            {hoursRows}
+                {hoursRows}
             </ul>
         );
     }

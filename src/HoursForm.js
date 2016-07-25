@@ -33,60 +33,59 @@ class HoursForm extends Component {
     render(){
         return (
             <div className="panel panel-default">
-            <div className="panel-body">
-            <form className="form-inline" onSubmit={this.handleSubmit}>
-            <div className="row">
-            <div className="col-md-12">
-            {/* Button group (radio buttons) for selecting days of the week */}
-            <div className="btn-group" data-toggle="buttons">
-            {/* TODO: Change this into a map loop */}
-            <label className="btn btn-default">
-            <input type="radio" name="weekdays" value="Mon" id="daybar-mon" autoComplete="off"/> Mon
-            </label>
-            <label className="btn btn-default">
-            <input type="radio" name="weekdays" value="Tus" id="daybar-tue" autoComplete="off"/> Tue
-            </label>
-            <label className="btn btn-default">
-            <input type="radio" name="weekdays" value="Wed" id="daybar-wed" autoComplete="off"/> Wed
-            </label>
-            <label className="btn btn-default">
-            <input type="radio" name="weekdays" value="Thu" id="daybar-thu" autoComplete="off"/> Thu
-            </label>
-            <label className="btn btn-default">
-            <input type="radio" name="weekdays" value="Fri" id="daybar-fri" autoComplete="off"/> Fri
-            </label>
-            <label className="btn btn-default">
-            <input type="radio" name="weekdays" value="Sat" id="daybar-sat" autoComplete="off"/> Sat
-            </label>
-            <label className="btn btn-default">
-            <input type="radio" name="weekdays" value="Sun" id="daybar-sun" autoComplete="off"/> Sun
-            </label>
-            </div>
-            </div>
-            </div>
+                <div className="panel-body">
+                    <form className="form-inline" onSubmit={this.handleSubmit}>
+                        <div className="row">
+                            <div className="col-md-12">
+                                {/* Button group (radio buttons) for selecting days of the week */}
+                                <div className="btn-group" data-toggle="buttons">
+                                    {/* TODO: Change this into a map loop */}
+                                    <label className="btn btn-default">
+                                        <input type="radio" name="weekdays" value="Mon" id="daybar-mon" autoComplete="off"/> Mon
+                                    </label>
+                                    <label className="btn btn-default">
+                                        <input type="radio" name="weekdays" value="Tus" id="daybar-tue" autoComplete="off"/> Tue
+                                    </label>
+                                    <label className="btn btn-default">
+                                        <input type="radio" name="weekdays" value="Wed" id="daybar-wed" autoComplete="off"/> Wed
+                                    </label>
+                                    <label className="btn btn-default">
+                                        <input type="radio" name="weekdays" value="Thu" id="daybar-thu" autoComplete="off"/> Thu
+                                    </label>
+                                    <label className="btn btn-default">
+                                        <input type="radio" name="weekdays" value="Fri" id="daybar-fri" autoComplete="off"/> Fri
+                                    </label>
+                                    <label className="btn btn-default">
+                                        <input type="radio" name="weekdays" value="Sat" id="daybar-sat" autoComplete="off"/> Sat
+                                    </label>
+                                    <label className="btn btn-default">
+                                        <input type="radio" name="weekdays" value="Sun" id="daybar-sun" autoComplete="off"/> Sun
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
 
-            {/* From and To time dropdowns */}
-            {/* TODO: Use a text field with autocomplete */}
-            <div className="row" style={{marginTop:"1em"}}>
+                        {/* From and To time dropdowns */}
+                        {/* TODO: Use a text field with autocomplete */}
+                        <div className="row" style={{marginTop:"1em"}}>
+                            <div className="col-md-5">
+                                <div className="form-group">
+                                    <label htmlFor="hours-from-select" style={{marginRight: "5px"}}>From: </label>
+                                    <HoursSelect id="hours-from-select" name="startTime"/>
+                                </div>
+                            </div>
 
-            <div className="col-md-5">
-            <div className="form-group">
-            <label htmlFor="hours-from-select" style={{marginRight: "5px"}}>From: </label>
-            <HoursSelect id="hours-from-select" name="startTime"/>
-            </div>
-            </div>
+                            <div className="col-md-5">
+                                <div className="form-group">
+                                    <label htmlFor="hours-to-select" style={{marginRight: "5px"}}>To: </label>
+                                    <HoursSelect id="hours-to-select" name="endTime"/>
+                                </div>
+                            </div>
+                        </div>
 
-            <div className="col-md-5">
-            <div className="form-group">
-            <label htmlFor="hours-to-select" style={{marginRight: "5px"}}>To: </label>
-            <HoursSelect id="hours-to-select" name="endTime"/>
-            </div>
-            </div>
-            </div>
-
-            <button type="submit" className="btn btn-primary pull-right">Add Hours</button>
-            </form>
-            </div>
+                        <button type="submit" className="btn btn-primary pull-right">Add Hours</button>
+                    </form>
+                </div>
             </div>
         );
     }

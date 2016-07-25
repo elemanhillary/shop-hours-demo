@@ -41,20 +41,20 @@ class ShopHoursApp extends Component {
     render() {
         return (
             <div className="App">
-            <div className="row">
-            <div className="col-md-4 col-md-offset-2">
-            <h1>Shop Hours Demo</h1>
-            <p className="intro">To get started, tell us the hours your shop is open.</p>
-            </div>
-            </div>
-            <div className="row">
-            <div className="col-md-4 col-md-offset-2">
-            <HoursPanel hours={this.state.hoursList} removeHours={this.removeHours}/>
-            </div>
-            <div className="col-md-4">
-            <HoursForm addHours={this.addHours}/>
-            </div>
-            </div>
+                <div className="row">
+                    <div className="col-md-4 col-md-offset-2">
+                        <h1>Shop Hours Demo</h1>
+                        <p className="intro">To get started, tell us the hours your shop is open.</p>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-4 col-md-offset-2">
+                        <HoursPanel hours={this.state.hoursList} removeHours={this.removeHours}/>
+                    </div>
+                    <div className="col-md-4">
+                        <HoursForm addHours={this.addHours}/>
+                    </div>
+                </div>
             </div>
         );
     }
