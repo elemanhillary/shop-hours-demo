@@ -52,7 +52,6 @@ class ShopHoursApp extends Component {
             hoursList[hrsIndex] = {day: hours.day, start: newStartTime, end: newEndTime};
         } else{
             // No overlap, so just add it onto the array
-            console.log('No overlap');
             hoursList.push(hours);
         }
 
