@@ -40,6 +40,11 @@ class HoursForm extends Component {
     handleSubmit(event){
         event.preventDefault();
 
+        /* NB:
+         * Accessing DOM node values directly isn't optimal, but works fine for
+         * small cases. In a real app, I'd use event handlers and controlled
+         * fields to store the values in the state and validate the form on the fly.
+         */
         var weekday = event.target.elements.weekdays.value;
         var startTime = event.target.elements.startTime.value;
         var endTime = event.target.elements.endTime.value;
@@ -56,12 +61,6 @@ class HoursForm extends Component {
 
         this.props.addHours({day: weekday, start: startTime, end: endTime});
     };
-
-    // Handles updating state when a day is selected
-    handleSelectDay(event){
-        console.log("selcted a day")
-        console.log(event.target);
-    }
 
     // Main render function for the add form
     render(){
