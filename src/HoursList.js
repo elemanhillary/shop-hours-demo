@@ -7,7 +7,7 @@ class HoursList extends Component {
     render(){
         var hoursRows = this.props.hours.map(function(hoursItem) {
             return (
-                <HoursRow key={hoursItem.day + hoursItem.start} dayHours={hoursItem} removeHours={this.props.removeHours}/>
+                <HoursRow key={hoursItem.day + hoursItem.start + "_" + hoursItem.end} dayHours={hoursItem} removeHours={this.props.removeHours}/>
             );
         }.bind(this));
 
