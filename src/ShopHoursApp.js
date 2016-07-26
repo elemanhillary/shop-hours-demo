@@ -6,10 +6,10 @@ import HoursPanel from './HoursPanel';
 //import './App.css';
 
 /**
-* Root Component for the Shop Hours App
-* Responsible for keeping the state (list of hours) and
-* rendering the overall structure.
-*/
+ * Root Component for the Shop Hours App
+ * Responsible for keeping the state (list of hours) and
+ * rendering the overall structure.
+ */
 class ShopHoursApp extends Component {
     // Constructor - Sets the inital state to an empty list of hours
     // Format of an item in the hoursList looks like: {day: 'Mon', start: 8, end: 14}
@@ -61,11 +61,13 @@ class ShopHoursApp extends Component {
 
         // Update the state with the new hours array
         this.setState({hoursList: hoursList});
+
+        // TODO: Save to a persistent datastore here
     }
 
     /* Callback for the HoursPanel component.
-    * Removes a set of begin/end hours from the state
-    */
+     * Removes a set of begin/end hours from the state
+     */
     removeHours(hours){
         var hoursList = this.state.hoursList;
 
@@ -83,6 +85,8 @@ class ShopHoursApp extends Component {
 
         // Update the state
         this.setState({hoursList: hoursList})
+
+        // TODO: Save to a persistent datastore here
     }
 
     render() {
