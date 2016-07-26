@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import HoursForm from './HoursForm';
 import HoursPanel from './HoursPanel';
 
-//import logo from './logo.svg';
-//import './App.css';
-
 /**
  * Root Component for the Shop Hours App
  * Responsible for keeping the state (list of hours) and
