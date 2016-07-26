@@ -24,11 +24,42 @@ class ShopHoursApp extends Component {
 
     /* Callback for the HoursForm component.
     * Adds a set of begin/end hours to the state
-    * TODO: deconflict overlapping hours
     */
     addHours(hours){
         var hoursList = this.state.hoursList;
-        hoursList.push(hours);
+
+        // Convert incoming hours to integer values for easy comparison
+        hours.start = parseInt(hours.start, 10);
+        hours.end = parseInt(hours.end, 10);
+
+        // Check for an overlapping time period, and if found then combine the new and existing ranges
+        var hrsIndex = hoursList.findIndex(function(element, index, arr){
+            // If the new hours range is on the same day AND starts before an existing rage but ends *after* the beginning of the existing range, then we have an overlap (or vice versa)
+            if(hours.day === element.day && ((hours.start > element.start && hours.start < element.end) || (hours.end > element.start && hours.end < element.end))){
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+        if(hrsIndex > -1){
+            // We found an overlap
+
+            // Take the earliest start time
+            var newStartTime = hours.start < hoursList[hrsIndex].start ? hours.start : hoursList[hrsIndex].start;
+
+            // Take the latest end time
+            var newEndTime = hours.end > hoursList[hrsIndex].end ? hours.end : hoursList[hrsIndex].end;
+
+            // Make a new hours object and replace the existing object at the index where it was found
+            hoursList[hrsIndex] = {day: hours.day, start: newStartTime, end: newEndTime};
+        } else{
+            // No overlap, so just add it onto the array
+            console.log('No overlap');
+            hoursList.push(hours);
+        }
+
+        // Update the state with the new hours array
         this.setState({hoursList: hoursList});
     }
 
