@@ -45,7 +45,7 @@ class HoursForm extends Component {
         var endTime = event.target.elements.endTime.value;
 
         // Check to make sure a day of the week was selected
-        if (weekday === null) {
+        if (weekday === "") {
             return; // TODO: Show a friendly error message, highlight the day selection buttons
         }
 
