@@ -3,12 +3,14 @@ import React, {Component} from 'react';
 // Responsible for rendering one row in the hours list
 class HoursRow extends Component {
     formatHour(hour) {
-        if(hour < 12) {
-            return (hour + "am");
+        if(hour === 0) {
+            return ("12 am")
+        } else if (hour < 12) {
+            return (hour + " am");
         } else if (hour === 12) {
-            return (hour + "pm");
+            return (hour + " pm");
         } else {
-            return ((hour - 12) + "pm");
+            return ((hour - 12) + " pm");
         }
     }
     handleRemove(){
