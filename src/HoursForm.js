@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 // Component to wrap the hours select element (drop down)
+// TODO: Use a text box with autocomplete instead
 class HoursSelect extends Component {
     render(){
 
@@ -43,7 +44,15 @@ class HoursForm extends Component {
         var startTime = event.target.elements.startTime.value;
         var endTime = event.target.elements.endTime.value;
 
-        // TODO Sanity checking -- End time should be before start time
+        // Check to make sure a day of the week was selected
+        if (weekday === null) {
+            return; // TODO: Show a friendly error message, highlight the day selection buttons
+        }
+
+        // Start time should be before end time
+        if(parseInt(startTime, 10) >= parseInt(endTime, 10)) {
+            return; // TODO: Show a friendly error message, highlight the start and end time fields
+        }
 
         this.props.addHours({day: weekday, start: startTime, end: endTime});
     };
